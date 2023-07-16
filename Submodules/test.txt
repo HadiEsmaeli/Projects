@@ -1,0 +1,7 @@
+my test file
+
+add new line 2 from main
+
+change from sub
+
+test rider

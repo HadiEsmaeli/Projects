@@ -1,0 +1,63 @@
+@extends('admin.layout.app')
+
+@section('heading', 'Edit Testimonial')
+
+@section('button')
+    <div>
+        <a href="{{ route( 'admin_testimonial' ) }}" class="btn btn-primary"><li class="fas fa-plus"></li> View All</a>
+    </div>
+@endsection
+
+@section('main_content')
+
+<div class="section-body">
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <form action="{{ route( 'admin_testimonial_update', $testimonial->id ) }}" method="POST" enctype="multipart/form-data">
+                        @csrf
+                        <div class="form-group mb-3">
+                            <label>Photo *</label>
+                            <input type="file" class="form-control" name="photo">
+                        </div>
+                        <div class="form-group mb-3">
+                            <label>Existing Photo *</label>
+                            <img src="{{ asset( 'uploads/testimonials/' . $testimonial->photo ) }}" 
+                                class="w_150"
+                                alt=""
+                            >
+                        </div>
+                        <div class="form-group mb-3">
+                            <label>Name *</label>
+                            <input type="text" class="form-control" 
+                                name="name"
+                                value="{{ $testimonial->name }}"
+                            >
+                        </div>
+                        <div class="form-group mb-3">
+                            <label>Designation *</label>
+                            <input type="text" class="form-control"
+                                name="designation"
+                                value="{{ $testimonial->designation }}"
+                            >
+                        </div>
+                        <div class="form-group mb-3">
+                            <label>Comment *</label>
+                            <textarea name="comment"
+                                class="form-control h_100"
+                                cols="30"
+                                rows="10"
+                            >{{ $testimonial->comment }}</textarea>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@endsection
